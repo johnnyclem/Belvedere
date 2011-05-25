@@ -46,7 +46,7 @@ require 'digest/md5'
     if movie.valid?
       movie.transcode("public/images/thumbs/#{File.basename(upload.gsub(processdir, "").slice(1..-1))}.jpg", "-itsoffset -4 -vcodec mjpeg -vframes 1 -an -f rawvideo -s 72x40")
       options = {:video_codec => "libx264", :video_preset => "ultrafast", :resolution => "720x404"}
-          movie.transcode("public/data/streaming/#{self.project_id}/#{File.basename(upload.gsub(processdir, "").slice(1..-1))}.mp4", options) unless File.basename(upload).match /((.*)_M\.m4v$)|((.*)_F\.m4v$)|((.*)_P\.m4v$)/
+          movie.transcode("public/data/streaming/#{self.project_id}/#{File.basename(upload.gsub(processdir, "").slice(1..-1))}.mp4", options) unless File.basename(upload).match /((.*)_F\.mov$)|((.*).THM$)|((.*).aif$)|((.*).aiff$)|((.*).AIF$)|((.*).AIFF$)|((.*).wav$)|((.*).WAV$)|((.*).CR2$)|((.*).R3D$)|((.*).mp3$)|((.*).MP3$)|((.*)_M\.mov$)|((.*)_P\.mov$)/
     else 
       FileUtils.cp("public/images/doc.png", "public/images/thumbs/#{File.basename(upload.gsub(processdir, "").slice(1..-1))}.jpg")
     end
