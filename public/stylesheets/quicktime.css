@@ -1,0 +1,40 @@
+.quicktime .button
+{
+	text-decoration: none;
+	color: white;
+	outline: none;
+	position: relative;
+	top: 50%;
+}
+
+.standard
+{
+	background-color: rgb(20,20,20);
+	font-size: 1em;
+	color: white;
+	zoom: 100%;
+	padding: .1em .25em;
+	opacity: .8;
+	-moz-opacity: .8;
+	-webkit-opacity: .8;
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+	filter: alpha(opacity=80);
+	-moz-border-radius: .5em;
+	-webkit-border-radius: .5em;
+	border-radius: .5em;
+	border: none;
+	font-family: Arial, sans-serif;
+}
+
+.quicktime
+{
+	position:relative;
+	text-align: center;
+	background-repeat: no-repeat;
+	background-position: center top;
+}
+
+.alt-content
+{
+	display: none;
+}

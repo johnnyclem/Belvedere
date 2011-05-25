@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Clip name:</b>
+  <%= @clip.clip_name %>
+</p>
+
+<p>
+  <b>Scene:</b>
+  <%= @clip.scene %>
+</p>
+
+<p>
+  <b>Running time:</b>
+  <%= @clip.running_time %>
+</p>
+
+<p>
+  <b>Camera:</b>
+  <%= @clip.camera %>
+</p>
+
+<p>
+  <b>Notes:</b>
+  <%= @clip.notes %>
+</p>
+
+<p>
+  <b>Archived:</b>
+  <%= @clip.archived %>
+</p>
+
+<p>
+  <b>Streaming:</b>
+  <%= @clip.streaming %>
+</p>
+
+<p>
+  <b>Project:</b>
+  <%= @clip.project_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_clip_path(@clip) %> |
+<%= link_to 'Back', clips_path %>

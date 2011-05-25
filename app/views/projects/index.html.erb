@@ -1,0 +1,66 @@
+<script>$(function() {
+	$("table")
+		.tablesorter({widthFixed: true, widgets: ['zebra']})
+		.tablesorterPager({container: $("#pager")});
+});
+</script>
+
+<center>
+<%= link_to 'Home' %> |
+<%= link_to 'New Project', new_project_path %> |
+<%= link_to 'Settings' %>
+
+<table id="myTable" class="tablesorter">
+ <thead>
+  <tr>
+    <th>Project Name</th>
+    <th>Clip Count</th>
+    <th>Data Size</th>
+    <th>Streaming proxy</th>
+    <th>Archived?</th>
+    <th>Online?</th>
+    <th>Streaming?</th>
+	<th>Proxies?</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+ </thead>
+
+<tbody class=content>
+<%- @projects.each do |project| %>
+  <tr>
+    <td><%= project.name %></td>
+    <td><%= project.director %></td>
+    <td><%= project.date %></td>
+    <td><%= project.streaming_proxy %></td>
+    <td><%= project.archived %></td>
+	<td></td>
+    <td></td>
+	<td></td>
+	<td><%= link_to 'Show', project %></td>
+    <td><%= link_to 'Edit', edit_project_path(project) %></td>
+    <td><%= link_to 'Destroy', project, :confirm => 'This Will Delete All Of Your Footage From The Internal RAID, Are you sure?', :method => :delete %></td>
+  </tr>
+<%- end %>
+</tbody>
+</table>
+<div id="pager" class="pager">
+	<form>
+		<img src="/images/first.png" class="first"/>
+		<img src="/images/prev.png" class="prev"/>
+		<input type="text" class="pagedisplay"/>
+		<img src="/images/next.png" class="next"/>
+		<img src="/images/last.png" class="last"/>
+		<select class="pagesize">
+			<option selected="selected"  value="10">10</option>
+			<option value="20">20</option>
+			<option value="30">30</option>
+			<option  value="40">40</option>
+		</select>
+	</form>
+</div>
+</center>
+
+
+

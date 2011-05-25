@@ -1,0 +1,69 @@
+<script>$(function() {
+	$("table")
+		.tablesorter({widthFixed: true, widgets: ['zebra']})
+		.tablesorterPager({container: $("#pager")});
+});
+</script>
+<left>
+	<%= Delayed::Job.count %>
+</left>
+
+<center>
+<p id="notice"><%= notice %></p>
+<%= link_to 'Home', projects_path %> |
+<%= link_to 'New Project', new_project_path %> |
+<%= link_to 'Settings', edit_project_path(@project) %> 
+
+<table id="myTable" class="tablesorter">	
+	<thead >
+  <tr >
+	<th> Clip Name </th>
+	<th> File Size </th>
+	<th> Running Time </th>
+	<th> Resolution </th>
+	<th> MD5 </th>
+	<th> Shot Notes </th>
+	<th> Watch Clip </th>
+  </tr>
+</thead>
+
+<tbody class=content>
+<% @project.clips.each do |clip| %>
+<tr >
+	<td ><%= clip.clip_name %></td>
+	<td ><%= number_to_human_size(clip.size) %></td>
+	<td ><%= (Time.mktime(0)+(clip.running_time || 0)).strftime("%Hh%Mm%Ss") %></td>
+	<td ><%= clip.resolution %></td>
+	<td ><%= if clip.md5source == clip.md5dest then image_tag("check.png") else image_tag("x.png") end %></td>
+	<td ><%= on_the_spot_edit clip, :notes, :url => update_attribute_on_the_spot_clips_path %></td>
+	<td ><div class=<%= "quicktime" %> style="background-image: url(<%= "/images/thumbs/#{File.basename(clip.clip_name)}.jpg" unless clip.clip_name.nil? or clip.running_time == 0 %>); width: 72px; height: 40px;"> <a href="<%= "/data/streaming/#{clip.project_id}/#{File.basename(clip.clip_name)}.mp4" unless clip.clip_name.nil? or clip.running_time == 0%>" class="standard button"><%= "View" %></a></div> </td>
+	<% end %>
+</tr>
+</tbody>
+	</table>
+	<div id="pager" class="pager">
+		<form>
+			<img src="/images/first.png" class="first"/>
+			<img src="/images/prev.png" class="prev"/>
+			<input type="text" class="pagedisplay"/>
+			<img src="/images/next.png" class="next"/>
+			<img src="/images/last.png" class="last"/>
+			<select class="pagesize">
+				<option selected="selected"  value="10">10</option>
+				<option value="20">20</option>
+				<option value="30">30</option>
+				<option  value="40">40</option>
+			</select>
+		</form>
+	</div>
+
+
+<%= link_to 'Ingest Footage', ingests_project_path %> |
+<%= link_to 'Offload Masters', offloads_project_path %> |
+<%= link_to 'Offload Proxies', offload_proxies_project_path %> |
+<%= link_to 'Delete Masters', delete_masters_project_path %> |
+<a href=<%= "/projects/#{@project.id}.csv" %>>Export Data To Excel</a>
+
+
+
+</center>

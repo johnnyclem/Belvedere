@@ -1,0 +1,60 @@
+<script>$(function() {
+	$("table")
+		.tablesorter({widthFixed: true, widgets: ['zebra']})
+		.tablesorterPager({container: $("#pager")});
+});
+</script>
+<center>
+<h1>Listing clips</h1>
+<table id="myTable" class="tablesorter">
+	<thead>
+  <tr>
+    <th><%= link_to "Clip name", :sort => "clip_name" %></th>
+    <th><%= link_to "Scene", :sort => "scene" %></th>
+    <th><%= link_to "Running Time", :sort => "running_time" %></th>
+    <th><%= link_to "Camera", :sort => "camera" %></th>
+    <th><%= link_to "Notes", :sort => "notes" %></th>
+    <th><%= link_to "Archived?", :sort => "archived" %></th>
+    <th><%= link_to "Streaming?", :sort => "streaming" %></th>
+    <th><%= link_to "Project", :sort => "project_id" %></th>
+	<th></th>
+	<th></th>
+  </tr>
+</thead>
+
+<tbody class=content>
+<% @clips.each do |clip| %>
+  <tr>
+    <td><%= clip.clip_name %></td>
+    <td><%= clip.scene %></td>
+    <td><%= clip.running_time %></td>
+    <td><%= clip.camera %></td>
+    <td><%= on_the_spot_edit clip, :notes %></td>
+    <td><%= clip.archived %></td>
+    <td><%= clip.streaming %></td>
+    <td><%= clip.project_id %></td>
+	<td><%= link_to 'Edit', clip, :method => :edit %></td>
+
+	<td><%= link_to 'Destroy', clip, :method => :delete %></td>
+  </tr>
+<% end %>
+</tbody>
+</table>
+<br />
+<div id="pager" class="pager">
+	<form>
+		<img src="/images/first.png" class="first"/>
+		<img src="/images/prev.png" class="prev"/>
+		<input type="text" class="pagedisplay"/>
+		<img src="/images/next.png" class="next"/>
+		<img src="/images/last.png" class="last"/>
+		<select class="pagesize">
+			<option selected="selected"  value="10">10</option>
+			<option value="20">20</option>
+			<option value="30">30</option>
+			<option  value="40">40</option>
+		</select>
+	</form>
+</div>
+
+</center>

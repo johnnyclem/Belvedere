@@ -1,0 +1,42 @@
+<%= form_for(@project) do |f| %>
+  <% if @project.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
+
+      <ul>
+      <% @project.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.text_field :name %>Project Name
+  </div>
+  <div class="field">
+    <%= f.text_field :director %><%= f.label :director %>
+  </div>
+  <div class="field">
+    <%= f.check_box :editing_proxy %><%= f.label :editing_proxy %>
+  </div>
+  <div class="field">
+    <%= f.check_box :streaming_proxy %><%= f.label :streaming_proxy %>
+  </div>
+  <div class="field">
+    <%= f.text_field :unique_copies %><%= f.label :unique_copies %>
+  </div><br />
+	<div class="field">
+		<%= f.text_field :offline %>
+		Enter Full Name Of Offline Drive e.g. <b>/Volumes/John's External</b>
+	</div>
+  <div class="field">
+    <%= f.check_box :file_size_verification %><%= f.label :file_size_verification %>
+  </div>
+  <div class="field">
+    <%= f.check_box :md5_verification %><%= f.label :md5_verification %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

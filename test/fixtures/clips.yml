@@ -1,0 +1,21 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  clip_name: MyString
+  scene: MyString
+  running_time: 1
+  camera: MyString
+  notes: MyString
+  archived: false
+  streaming: false
+  project_id: 1
+
+two:
+  clip_name: MyString
+  scene: MyString
+  running_time: 1
+  camera: MyString
+  notes: MyString
+  archived: false
+  streaming: false
+  project_id: 1
