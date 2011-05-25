@@ -36,7 +36,7 @@
 	<td ><%= clip.resolution %></td>
 	<td ><%= if clip.md5source == clip.md5dest then image_tag("check.png") else image_tag("x.png") end %></td>
 	<td ><%= on_the_spot_edit clip, :notes, :url => update_attribute_on_the_spot_clips_path %></td>
-	<td ><div class=<%= "quicktime" %> style="background-image: url(<%= "/images/thumbs/#{File.basename(clip.clip_name)}.jpg" %>); width: 72px; height: 40px;"> <a href="<%=  "/data/streaming/#{clip.project_id}/#{File.basename(clip.clip_name)}.mp4" %>" class="standard button">View</a></div> </td>
+	<td ><div class=<%= "quicktime" %> style="background-image: url(<%= "/images/thumbs/#{File.basename(clip.clip_name)}.jpg" %>); width: 72px; height: 40px;"> <a href="<%= "/data/streaming/#{clip.project_id}/#{File.basename(clip.clip_name)}.mp4" %>" class="standard button">View</a></div> </td>
 	<% end %>
 </tr>
 </tbody>
