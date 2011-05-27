@@ -7,13 +7,14 @@ require 'digest/md5'
     c = Clip.new(:project => project)
     if File.directory?(upload)
       Dir.glob("#{upload}/*").each do |f|
-        Clip.process_directory(f, processdir, project)
+        Clip.delay.process_directory(f, processdir, project)
       end
     else 
       c = Clip.create(:project => project)
       c.data_file(upload, processdir)
       c.save
     end
+    #{}%x(diskutil eject \Storage) -- needs to happen after  Delayed::Job.count == 0
   end
   
 #  def self.process_directory_size(upload, processdir, project)

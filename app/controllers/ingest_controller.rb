@@ -12,7 +12,8 @@ class IngestController < ApplicationController
     def create
       @project = Project.find(params[:id])
       Clip.process_directory(params[:path][:path], params[:path][:path], Project.find(params[:id]))
-      %x(diskutil eject params[:path][:path])
+      
+      
       respond_to do |format|
         format.html { redirect_to(project_path(:id => params[:id]))}
       end
