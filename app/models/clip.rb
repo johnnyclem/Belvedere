@@ -7,7 +7,7 @@ require 'digest/md5'
     c = Clip.new(:project => project)
     if File.directory?(upload)
       Dir.glob("#{upload}/*").each do |f|
-        Clip.delay.process_directory(f, processdir, project)
+        Clip.process_directory(f, processdir, project)
       end
     else 
       c = Clip.create(:project => project)
@@ -30,14 +30,10 @@ require 'digest/md5'
 #    end
 #  end
   
-  def data_file(upload, processdir)
-    FileUtils.mkdir("public/data/#{self.project_id}/") unless File.exists?("public/data/#{self.project_id}/")
-    FileUtils.mkdir("public/data/#{self.project_id}/#{File.dirname(upload.gsub(processdir, ""))}") unless File.exists?("public/data/#{self.project_id}/#{File.dirname(upload.gsub(processdir, ""))}")
-    
+  def data_file(upload, processdir)    
     dest = Rails.root.join("public/data/#{self.project_id}/#{upload.gsub(processdir, "")}")
     digest = Digest::MD5.hexdigest(File.open(upload, "rb") { |b| b.read })     
-  
-    FileUtils.cp_r(upload, dest)                  # Copies the file(s) to the project temp folder
+
     File.basename(upload)
     
     destdigest = Digest::MD5.hexdigest(File.open("#{dest}", "rb") { |b| b.read })    # MD5 Checksums the copied file(s) after copy
