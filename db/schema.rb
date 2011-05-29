@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110516055556) do
+ActiveRecord::Schema.define(:version => 20110529170340) do
 
   create_table "clips", :force => true do |t|
     t.string   "clip_name"
@@ -67,6 +67,8 @@ ActiveRecord::Schema.define(:version => 20110516055556) do
     t.string   "offline"
     t.string   "proxy_offline"
     t.string   "archived"
+    t.string   "size"
+    t.string   "file"
   end
 
   create_table "settings", :force => true do |t|

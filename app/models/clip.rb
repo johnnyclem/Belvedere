@@ -41,9 +41,12 @@ require 'digest/md5'
     
     FileUtils.mkdir_p("public/data/streaming/#{self.project_id}") unless File.exists?("public/data/streaming/#{self.project_id}")
     if movie.valid?
+      debugger
       movie.transcode("public/images/thumbs/#{File.basename(upload.gsub(processdir, "").slice(1..-1))}.jpg", "-itsoffset -4 -vcodec mjpeg -vframes 1 -an -f rawvideo -s 72x40")
       options = {:video_codec => "libx264", :video_preset => "ultrafast", :resolution => "720x404"}
-          movie.transcode("public/data/streaming/#{self.project_id}/#{File.basename(upload.gsub(processdir, "").slice(1..-1))}.mp4", options) unless File.basename(upload).match /((.*)_F\.mov$)|((.*).THM$)|((.*).aif$)|((.*).aiff$)|((.*).AIF$)|((.*).AIFF$)|((.*).wav$)|((.*).WAV$)|((.*).CR2$)|((.*).R3D$)|((.*).mp3$)|((.*).MP3$)|((.*)_M\.mov$)|((.*)_P\.mov$)/
+#      movie.transcode("public/data/streaming/#{self.project_id}/#{File.basename(upload.gsub(processdir, "").slice(1..-1))}.mp4", options) unless File.basename(upload).match /((.*)_F\.mov$)|((.*).THM$)|((.*).aif$)|((.*).aiff$)|((.*).AIF$)|((.*).AIFF$)|((.*).wav$)|((.*).WAV$)|((.*).CR2$)|((.*).R3D$)|((.*).mp3$)|((.*).MP3$)|((.*)_M\.mov$)|((.*)_P\.mov$)/
+#      if movie.video_codec == "REDCODE"
+#        %x[qt_export --video=h264,23.98,50 "public/data/#{self.project.id}/upload.gsub(processdir, "").slice(1..-1)" "public/data/streaming/#{self.project_id}/#{File.basename(upload.gsub(processdir, "").slice(1..-1))}.mp4"  ]
     else 
       FileUtils.cp("public/images/doc.png", "public/images/thumbs/#{File.basename(upload.gsub(processdir, "").slice(1..-1))}.jpg")
     end

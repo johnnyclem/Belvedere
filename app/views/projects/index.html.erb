@@ -31,8 +31,8 @@
 <%- @projects.each do |project| %>
   <tr>
     <td><%= project.name %></td>
-    <td><%= project.director %></td>
-    <td><%= project.date %></td>
+    <td><%= project.file %></td>
+    <td><%= number_to_human_size(project.size) %></td>
     <td><%= project.streaming_proxy %></td>
     <td><%= project.archived %></td>
 	<td></td>
