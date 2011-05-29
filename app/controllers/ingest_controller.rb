@@ -24,7 +24,6 @@ class IngestController < ApplicationController
       @project.size = dirsize
       @project.save
       #end project size calculation
-      debugger
       Clip.process_directory(params[:path][:path], params[:path][:path], Project.find(params[:id]))
       
       
