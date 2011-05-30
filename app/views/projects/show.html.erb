@@ -1,6 +1,6 @@
-<script>$(function() {
+<script>$(document).ready(function() {
 	$("table")
-		.tablesorter({widthFixed: true, widgets: ['zebra']})
+		.tablesorter({widthFixed: false, widgets: ['zebra']})
 		.tablesorterPager({container: $("#pager")});
 });
 </script>
@@ -36,7 +36,7 @@
 	<td ><%= clip.resolution %></td>
 	<td ><%= if clip.md5source == clip.md5dest then image_tag("check.png") else image_tag("x.png") end %></td>
 	<td ><%= on_the_spot_edit clip, :notes, :url => update_attribute_on_the_spot_clips_path %></td>
-	<td ><div class=<%= "quicktime" %> style="background-image: url(<%= "/images/thumbs/#{File.basename(clip.clip_name)}.jpg" unless clip.clip_name.nil? %>); width: 72px; height: 40px;"> <a href="<%= "/data/streaming/#{clip.project_id}/#{File.basename(clip.clip_name)}.mp4" unless clip.clip_name.nil?%>" class="standard button">View</a></div> </td>
+	<td ><%= if File.exist?("#{RAILS_ROOT}/public/data/streaming/#{clip.project_id}/#{File.basename(clip.clip_name)}.mp4") then link_to image_tag("/images/thumbs/#{File.basename(clip.clip_name)}.jpg"), "/data/streaming/#{clip.project_id}/#{File.basename(clip.clip_name)}.mp4" else image_tag("/images/noproxy.png") end %>
 	<% end %>
 </tr>
 </tbody>

@@ -46,7 +46,7 @@ require 'digest/md5'
 #      options = {:video_codec => "libx264", :video_preset => "ultrafast", :resolution => "720x404"}
 #      movie.transcode("public/data/streaming/#{self.project_id}/#{File.basename(upload.gsub(processdir, "").slice(1..-1))}.mp4", options) unless File.basename(upload).match /((.*)_F\.mov$)|((.*).THM$)|((.*).aif$)|((.*).aiff$)|((.*).AIF$)|((.*).AIFF$)|((.*).wav$)|((.*).WAV$)|((.*).CR2$)|((.*).R3D$)|((.*).mp3$)|((.*).MP3$)|((.*)_M\.mov$)|((.*)_P\.mov$)/
 #      if movie.video_codec == "REDCODE"
-       %x[qt_export --video=h264,23.98,50 "public/data/#{self.project.id}/#{self.clip_name}" "public/data/streaming/#{self.project_id}/#{self.clip_name}.mp4"  ] unless self.clip_name.match /((.*)_F\.mov$)|((.*).THM$)|((.*).aif$)|((.*).aiff$)|((.*).AIF$)|((.*).AIFF$)|((.*).wav$)|((.*).WAV$)|((.*).CR2$)|((.*).R3D$)|((.*).mp3$)|((.*).MP3$)|((.*)_M\.mov$)|((.*)_P\.mov$)/
+       %x[qt_export --video=h264,100 "public/data/#{self.project.id}/#{self.clip_name}" "public/data/streaming/#{self.project_id}/#{self.clip_name}.mp4"  ] unless self.clip_name.match /((.*)_F\.mov$)|((.*).THM$)|((.*).aif$)|((.*).aiff$)|((.*).AIF$)|((.*).AIFF$)|((.*).wav$)|((.*).WAV$)|((.*).CR2$)|((.*).R3D$)|((.*).mp3$)|((.*).MP3$)|((.*)_H\.mov$)|((.*)_P\.mov$)/
     else 
       FileUtils.cp("public/images/doc.png", "public/images/thumbs/#{File.basename(upload.gsub(processdir, "").slice(1..-1))}.jpg")
     end

@@ -14,16 +14,10 @@
  <thead>
   <tr>
     <th>Project Name</th>
-    <th>Clip Count</th>
     <th>Data Size</th>
-    <th>Streaming proxy</th>
-    <th>Archived?</th>
-    <th>Online?</th>
-    <th>Streaming?</th>
-	<th>Proxies?</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Show</th>
+    <th>Edit</th>
+    <th>Destroy</th>
   </tr>
  </thead>
 
@@ -31,13 +25,7 @@
 <%- @projects.each do |project| %>
   <tr>
     <td><%= project.name %></td>
-    <td><%= project.file %></td>
     <td><%= number_to_human_size(project.size) %></td>
-    <td><%= project.streaming_proxy %></td>
-    <td><%= project.archived %></td>
-	<td></td>
-    <td></td>
-	<td></td>
 	<td><%= link_to 'Show', project %></td>
     <td><%= link_to 'Edit', edit_project_path(project) %></td>
     <td><%= link_to 'Destroy', project_path(project), :class => 'remote-delete' %></td>

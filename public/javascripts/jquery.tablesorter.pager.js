@@ -135,7 +135,7 @@
 				cssPageDisplay: '.pagedisplay',
 				cssPageSize: '.pagesize',
 				seperator: "/",
-				positionFixed: true,
+				positionFixed: false,
 				appender: this.appender
 			};
 			
