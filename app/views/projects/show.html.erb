@@ -20,7 +20,6 @@
 	<th> Clip Name </th>
 	<th> File Size </th>
 	<th> Running Time </th>
-	<th> Resolution </th>
 	<th> MD5 </th>
 	<th> Shot Notes </th>
 	<th> Watch Clip </th>
@@ -33,7 +32,6 @@
 	<td ><%= clip.clip_name %></td>
 	<td ><%= number_to_human_size(clip.size) %></td>
 	<td ><%= (Time.mktime(0)+(clip.running_time || 0)).strftime("%Hh%Mm%Ss") %></td>
-	<td ><%= clip.resolution %></td>
 	<td ><%= if clip.md5source == clip.md5dest then image_tag("check.png") else image_tag("x.png") end %></td>
 	<td ><%= on_the_spot_edit clip, :notes, :url => update_attribute_on_the_spot_clips_path %></td>
 	<td ><%= if File.exist?("#{RAILS_ROOT}/public/data/streaming/#{clip.project_id}/#{File.basename(clip.clip_name)}.mp4") then link_to image_tag("/images/thumbs/#{File.basename(clip.clip_name)}.jpg"), "/data/streaming/#{clip.project_id}/#{File.basename(clip.clip_name)}.mp4" else image_tag("/images/noproxy.png") end %>
@@ -61,7 +59,6 @@
 <%= link_to 'Ingest Footage', ingests_project_path %> |
 <%= link_to 'Offload Masters', offloads_project_path %> |
 <%= link_to 'Offload Proxies', offload_proxies_project_path %> |
-<%= link_to 'Delete Masters', delete_masters_project_path %> |
 <a href=<%= "/projects/#{@project.id}.csv" %>>Export Data To Excel</a>
 
 

@@ -1,5 +1,4 @@
 <body>
-	<div id="fileTree" class="demo"></div>
 <ul>
 <% @dirs.each do |dir| %>
 	<li><%= link_to(dir, ingests_project_path(:id => @project.id, :path => dir)) %></li>
