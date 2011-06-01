@@ -15,8 +15,10 @@ class IngestController < ApplicationController
   
     def create
       @project = Project.find(params[:id])
-      FileUtils.mkdir_p("public/data/#{@project.id}/") unless File.exists?("public/data/#{@project.id}/")
-      FileUtils.cp_r("#{params[:path][:path]}/.", "public/data/#{@project.id}/")
+      t = Time.now
+      @project.icount = t.strftime("%m%d%y_%H%M%p")
+      FileUtils.mkdir_p("public/data/#{@project.id}/#{@project.icount}")
+      FileUtils.cp_r("#{params[:path][:path]}/.", "public/data/#{@project.id}/#{@project.icount}")
       #project size calculation
       dirsize = 0
       Find.find("#{RAILS_ROOT}/public/data/#{@project.id}") do |f| dirsize += File.stat(f).size 

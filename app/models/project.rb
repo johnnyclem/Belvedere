@@ -1,5 +1,6 @@
 class Project < ActiveRecord::Base
   has_many :clips
+  has_many :ingests
 #  validates :name, :length => { :maximum => 60 }
 #  validates :director, :length => { :maximum => 30 }
 #  validates :date, :length => { :maximum => 10 }

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110529170340) do
+ActiveRecord::Schema.define(:version => 20110601183422) do
 
   create_table "clips", :force => true do |t|
     t.string   "clip_name"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(:version => 20110529170340) do
     t.string   "md5source"
     t.string   "md5dest"
     t.string   "md5_match"
+    t.string   "icount"
   end
 
   create_table "delayed_jobs", :force => true do |t|
@@ -69,6 +70,7 @@ ActiveRecord::Schema.define(:version => 20110529170340) do
     t.string   "archived"
     t.string   "size"
     t.string   "file"
+    t.string   "icount"
   end
 
   create_table "settings", :force => true do |t|
