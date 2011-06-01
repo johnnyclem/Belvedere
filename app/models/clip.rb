@@ -44,17 +44,13 @@ require 'digest/md5'
     self.clip_name = upload.gsub(processdir, "").slice(1..-1)
     if movie.valid?
       %x[qt_export --PICT "public/data/#{self.project.id}/#{self.icount}/#{self.clip_name}" "public/data/images/thumbs/#{self.clip_name}.jpg"  ]
-#      options = {:video_codec => "libx264", :video_preset => "ultrafast", :resolution => "720x404"}
-#      movie.transcode("public/data/streaming/#{self.project_id}/#{File.basename(upload.gsub(processdir, "").slice(1..-1))}.mp4", options) unless File.basename(upload).match /((.*)_F\.mov$)|((.*).THM$)|((.*).aif$)|((.*).aiff$)|((.*).AIF$)|((.*).AIFF$)|((.*).wav$)|((.*).WAV$)|((.*).CR2$)|((.*).R3D$)|((.*).mp3$)|((.*).MP3$)|((.*)_M\.mov$)|((.*)_P\.mov$)/
-#      if movie.video_codec == "REDCODE"
-       %x[qt_export --exporter=M4VP "public/data/#{self.project.id}/#{self.icount}/#{self.clip_name}" "public/data/streaming/#{self.project_id}/#{self.clip_name}.mp4"  ] unless self.clip_name.match /((.*)_F\.mov$)|((.*).THM$)|((.*).aif$)|((.*).aiff$)|((.*).AIF$)|((.*).AIFF$)|((.*).wav$)|((.*).WAV$)|((.*).CR2$)|((.*).R3D$)|((.*).mp3$)|((.*).MP3$)|((.*)_H\.mov$)|((.*)_P\.mov$)/
-#       %x[/Applications/Compressor.app/Contents/MacOS/Compressor -clustername "This Computer" -batchname mybatch -jobpath "public/data/#{self.project.id}/#{self.clip_name}" -settingpath "public/ghhx.setting" -destinationpath "public/data/streaming/#{self.project_id}/#{self.clip_name}.mp4" ] unless self.clip_name.match /((.*)_F\.mov$)|((.*).THM$)|((.*).aif$)|((.*).aiff$)|((.*).AIF$)|((.*).AIFF$)|((.*).wav$)|((.*).WAV$)|((.*).CR2$)|((.*).R3D$)|((.*).mp3$)|((.*).MP3$)|((.*)_H\.mov$)|((.*)_P\.mov$)/
+      %x[movencoder -V -s "#{RAILS_ROOT}/public/settingMovie" #{RAILS_ROOT}/public/data/#{self.project.id}/#{self.icount}/#{self.clip_name} #{RAILS_ROOT}/public/data/streaming/#{self.project_id}/#{File.basename("#{self.clip_name}", '.*')}.mov] unless self.clip_name.match /((.*)_F\.mov$)|((.*).THM$)|((.*).aif$)|((.*).aiff$)|((.*).AIF$)|((.*).AIFF$)|((.*).wav$)|((.*).WAV$)|((.*).CR2$)|((.*).R3D$)|((.*).mp3$)|((.*).MP3$)|((.*)_H\.mov$)|((.*)_P\.mov$)/
     else 
     end
       
 
     self.running_time = movie.duration || 0
-    self.size = movie.size
+    self.size = File.size("public/data/#{self.project.id}/#{self.icount}/#{self.clip_name}")
     self.resolution = movie.resolution
     self.md5source = digest
     self.md5dest = destdigest
