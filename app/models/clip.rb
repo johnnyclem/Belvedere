@@ -17,19 +17,6 @@ require 'digest/md5'
     #{}%x(diskutil eject \Storage) -- needs to happen after  Delayed::Job.count == 0
   end
   
-#  def self.process_directory_size(upload, processdir, project)
-#    c = Clip.new(:project => project)
-#    if File.directory?(upload)
-#      Dir.glob("#{upload}/*").each do |f|
-#        Clip.process_directory(f, processdir, project)
-#      end
-#    else 
-#      c = Clip.create(:project => project)
-#      c.data_file(upload, processdir)
-#      c.save
-#    end
-#  end
-  
   def data_file(upload, processdir)    
     self.icount = @project.icount
     dest = Rails.root.join("public/data/#{self.project_id}/#{self.icount}/#{upload.gsub(processdir, "")}")
@@ -51,7 +38,7 @@ require 'digest/md5'
 
     self.running_time = movie.duration || 0
     self.size = File.size("public/data/#{self.project.id}/#{self.icount}/#{self.clip_name}")
-    self.resolution = movie.resolution
+#    self.resolution = movie.resolution
     self.md5source = digest
     self.md5dest = destdigest
     if self.md5source == self.md5dest then self.md5_match = "1" else self.md5_match = "0" 
