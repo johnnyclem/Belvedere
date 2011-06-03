@@ -1,23 +1,21 @@
 
 /* tables */
 table.tablesorter {
-	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-family: "Myriad Pro", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
 	background-color: #CDCDCD;
 	margin:10px 0pt 15px;
 	font-size: 8pt;
 	width: 100%;
 	text-align: left;
+	color: #444444;
 }
 table.tablesorter thead tr th, table.tablesorter tfoot tr th {
 	background-color: white;
-	border: 1px solid #FFF;
 	font-size: 8pt;
 	padding: 4px;
 }
 table.tablesorter thead tr .header {
-	background-image: url(/images/asc.gif);
-	background-repeat: no-repeat;
-	background-position: center right;
+	background-image: url(table_sprite.png);
 	cursor: pointer;
 }
 table.tablesorter tbody td {

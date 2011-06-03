@@ -1,6 +1,6 @@
 body{
 font-size:0.85em;
-font-family: "Myriad Pro", Verdana, Arial, Helvetica, sans-serif;
+font-family: "Myriad Pro", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
 
 }
  .kwicks {  
@@ -83,5 +83,88 @@ font-family: "Myriad Pro", Verdana, Arial, Helvetica, sans-serif;
 	background-position: right -40px;
 }
 #kwick6 a:hover{
+	background-position: right -120px;
+}
+
+ .tables {  
+     list-style: none;  
+     position: relative;  
+     margin: 0;  
+     padding: 0; 
+	 background-image:url(no_flicker.jpg); /*some browsers are to slow when aligning the menu items via jQuery and so the background shines through, this prevents this flickering*/
+
+ }  
+ .tables li{  
+    display: block;  
+    overflow: hidden;  
+    padding: 0;  
+    cursor: pointer;  
+	float: left;
+	width: 125px;
+	height: 40px;
+	margin-right: 0px;
+	background-image:url(table_sprite.png);
+	background-repeat:no-repeat;
+}
+.tables a{
+	display:block;
+	height:40px;
+	text-indent:-9999px;
+	outline:none;
+}
+
+#tables1 {
+	background-position:0px 0px;
+}
+#tables2 {
+	background-position:-200px 0px;
+}
+#tables3 {
+	background-position:-400px 0px;
+}
+#tables4 { 
+	background-position:-600px 0px;
+}
+#tables5 { 
+	background-position:-800px 0px;
+}
+#tables6 { 
+	background-position:-1000px 0px;
+}
+
+#tables1.active, #tables1:hover { 
+	background-position: 0 bottom;
+}
+#tables2.active, #tables2:hover{
+	background-position: -200px bottom;
+}
+#tables3.active, #tables3:hover {
+	background-position: -400px bottom;
+}
+#tables4.active, #tables4:hover {
+	background-position: -600px bottom; 
+}
+#tables5.active, #tables5:hover {
+	background-position: -800px bottom; 
+}
+#tables6.active, #tables6:hover {
+	background-position: -1000px bottom; 
+}
+#tables1 a{
+	background-image:url(end.jpg);
+	background-repeat:no-repeat;
+	background-position: left 0px;
+}
+
+#tables1 a:hover{
+	background-position: left -80px;
+}
+
+#tables6 a{
+	background-image:url(end.jpg);
+	background-repeat:no-repeat;
+	background-position: right -40px;
+}
+#tables6 a:hover{
 	background-position: right -120px;
 }
