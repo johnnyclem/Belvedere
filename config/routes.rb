@@ -19,6 +19,7 @@ Belvedere::Application.routes.draw do
       get 'offload' => 'offload#index', :as => :offloads
       post 'offload' => 'offload#create', :as => :offloads
       get 'offload_proxies' => 'offload_proxies#index', :as => :offload_proxies
+      post 'offload_proxies' => 'offload_proxies#create', :as => :offload_proxies
       get 'delete_masters' => 'delete_masters#index', :as => :delete_masters
     end
   end

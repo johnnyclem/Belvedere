@@ -1,0 +1,12 @@
+<body>
+<ul>
+<% @dirs.each do |dir| %>
+	<li><%= link_to(dir, offloads_project_path(:id => @project.id, :path => dir)) %></li>
+<% end %>
+</ul>
+
+<%= form_for(:path, :url => offloads_project_path(:id => @project.id)) do |f| %>
+	<%= f.hidden_field :path, :value => params[:path] %>
+	<%= submit_tag "go" %>
+<% end %>
+</body>
