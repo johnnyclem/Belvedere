@@ -1,2 +1,7 @@
 # Logfile created on Mon May 16 12:46:39 -0700 2011 by logger.rb/22285
 2011-05-16T12:46:39-0700: [Worker(delayed_job host:Clem.local pid:7827)] Starting job worker
+2011-06-04T10:40:13-0700: [Worker(delayed_job host:Clem.local pid:61793)] Starting job worker
+2011-06-04T10:41:22-0700: [Worker(delayed_job host:Clem.local pid:61793)] Class#process_directory completed after 18.7830
+2011-06-04T10:41:22-0700: [Worker(delayed_job host:Clem.local pid:61793)] 1 jobs processed at 0.0532 j/s, 0 failed ...
+2011-06-04T10:42:14-0700: [Worker(delayed_job host:Clem.local pid:61793)] Class#process_directory completed after 21.7951
+2011-06-04T10:42:14-0700: [Worker(delayed_job host:Clem.local pid:61793)] 1 jobs processed at 0.0459 j/s, 0 failed ...

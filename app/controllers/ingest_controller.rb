@@ -26,7 +26,7 @@ class IngestController < ApplicationController
       @project.size = dirsize
       @project.save
       #end project size calculation
-      Clip.process_directory(params[:path][:path], params[:path][:path], Project.find(params[:id]))
+      Clip.delay.process_directory(params[:path][:path], params[:path][:path], Project.find(params[:id]))
       
       
       respond_to do |format|
