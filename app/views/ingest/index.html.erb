@@ -1,7 +1,7 @@
 <body>
 <ul>
 <% @dirs.each do |dir| %>
-	<li><%= link_to(dir, ingests_project_path(:id => @project.id, :path => dir)) %></li>
+	<li><%= link_to  (dir, ingests_project_path(:id => @project.id, :path => dir)) %> <%= image_tag("hdd.jpg")%></li>
 <% end %>
 </ul>
 
