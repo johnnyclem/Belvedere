@@ -1,20 +1,42 @@
 body{
 font-size:0.85em;
 font-family: "Myriad Pro", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+color: white; opacity: 0.8;
 background-image:url(bg.jpg);
 background-repeat:repeat-x;
-
 }
+#field {
+	font-family: "Myriad Pro", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+	font-size: 8pt;
+	width: 80%;
+	color: #444444;
+	background-color: #CDCDCD; opacity: 0.5;
+	width: 500px; 
+	margin: auto;
+	border-radius: 15px;
+}
+
+a:link { 
+	color: #333333;
+	}
+a:visited { 
+	color: #333333;
+	}
+a:hover { 
+	color: #fff;
+	text-decoration: none;
+	}
+a:active { 
+	color: #333333;
+	}
  .kwicks {  
      list-style: none;  
      position: relative;  
      margin: 0;  
      padding: 0; 
-	 background-image:url(no_flicker.jpg); /*some browsers are to slow when aligning the menu items via jQuery and so the background shines through, this prevents this flickering*/
 
  }  
- .kwicks li{  
-    position: static;  
+ .kwicks li{    
     display: block;  
     overflow: hidden;  
     padding: 0;  
@@ -23,8 +45,6 @@ background-repeat:repeat-x;
 	width: 125px;
 	height: 40px;
 	margin-right: 0px;
-	background-image:url(kwicks_sprite.png);
-	background-repeat:no-repeat;
 }
 .kwicks a{
 	display:block;
@@ -115,4 +135,80 @@ background-repeat:repeat-x;
 	margin-right: 0px;
 	background-image:url(kwicks_sprite.png);
 	background-repeat:no-repeat;
+}
+
+/* tables */
+table.tablesorter {
+	font-family: "Myriad Pro", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+	margin:10px 0pt 15px;
+	font-size: 8pt;
+	width: 80%;
+	text-align: left;
+	color: #444444;
+	background-color: #CDCDCD; opacity: 0.6;
+	border-radius: 15px;
+}
+
+table.tablesorter thead tr th, table.tablesorter tfoot tr th {
+	font-size: 8pt;
+	padding: 4px;
+
+	
+}
+table.tablesorter thead tr .header {
+	cursor: pointer;
+}
+table.tablesorter tbody td {
+	color: #3D3D3D;
+	padding: 4px;
+	vertical-align: top;
+}
+table.tablesorter tbody tr.odd td {
+	background-color:#fff;
+}
+table.tablesorter thead tr .headerSortUp {
+}
+table.tablesorter thead tr .headerSortDown {
+}
+table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
+
+
+
+}
+
+
+
+#notice {
+  color: green;
+}
+
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#error_explanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  margin-bottom: 0px;
+  background-color: #c00;
+  color: #fff;
+}
+
+#error_explanation ul li {
+  font-size: 12px;
+  list-style: square;
 }

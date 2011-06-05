@@ -5,3 +5,4 @@ require 'comma'
 
 # Initialize the rails application
 Belvedere::Application.initialize!
+

@@ -4,6 +4,7 @@ div.tablesorterPager {
 }
 div.tablesorterPager span {
 	padding: 0 5px 0 5px;
+	
 }
 div.tablesorterPager input.prev {
 	width: auto;
@@ -12,10 +13,11 @@ div.tablesorterPager input.prev {
 div.tablesorterPager input.next {
 	width: auto;
 	margin-left: 10px;
+	
 }
 div.tablesorterPager input {
 	font-size: 8px;
 	width: 50px;
-	border: 1px solid #330000;
 	text-align: center;
+	
 }
