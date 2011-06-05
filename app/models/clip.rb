@@ -32,7 +32,8 @@ require 'digest/md5'
     debugger
     if movie.valid?
       %x[movencoder -V -s "#{RAILS_ROOT}/public/settingMovie" #{RAILS_ROOT}/public/data/#{self.project.id}/#{self.icount}/#{self.clip_name} #{RAILS_ROOT}/public/data/streaming/#{self.project_id}/#{File.basename("#{self.clip_name}", '.*')}.mov] unless self.clip_name.match /((.*)_F\.mov$)|((.*).THM$)|((.*).aif$)|((.*).aiff$)|((.*).AIF$)|((.*).AIFF$)|((.*).wav$)|((.*).WAV$)|((.*).CR2$)|((.*).R3D$)|((.*).mp3$)|((.*).MP3$)|((.*)_H\.mov$)|((.*)_M\.mov$)/
-      %x[qt_export --PICT "public/data/streaming/#{self.project_id}/#{File.basename("#{self.clip_name}", '.*')}.mov" "public/images/thumbs/#{self.clip_name}.jpg"  ]
+      %x[qt_export --PICT --loadsettings="public/exportsettings.st" "public/data/streaming/#{self.project_id}/#{File.basename("#{self.clip_name}", '.*')}.mov" "public/images/thumbs/#{self.clip_name}.jpg"  ]
+      %x[sips -z 40 72 "public/images/thumbs/#{self.clip_name}.jpg" ]
     else 
     end
       

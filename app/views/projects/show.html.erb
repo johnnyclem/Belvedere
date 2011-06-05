@@ -8,15 +8,6 @@
 
 <%= Delayed::Job.count%>
 <center>
-	<ul class="kwicks">
-		<li id="kwick1"><%= link_to 'Home', projects_path %> </li>
-	     <li id="kwick2"><%= link_to image_tag("ingest.png"), ingests_project_path %></li>
-	     <li id="kwick3"><%= link_to image_tag("offload.png"), offloads_project_path %></li>
-	     <li id="kwick4"><%= link_to image_tag("proxies.png"), offload_proxies_project_path %></li>
-	     <li id="kwick5"><%= link_to image_tag("excel.png"), request.parameters.merge({:format => :csv}) %></li>
-		<li id="kwick6"><%= link_to 'Settings', edit_project_path(@project) %></li> 
-	 </ul>
-<p id="notice"><%= notice %></p>
 
 
 <table id="myTable" class="tablesorter">	
@@ -39,10 +30,19 @@
 	<td ><%= (Time.mktime(0)+(clip.running_time || 0)).strftime("%Hh%Mm%Ss") %></td>
 	<td ><%= if clip.md5source == clip.md5dest then image_tag("check.png") else image_tag("x.png") end %></td>
 	<td ><%= on_the_spot_edit clip, :notes, :url => update_attribute_on_the_spot_clips_path %></td>
-	<td ><%= if File.exist?("#{RAILS_ROOT}/public/data/streaming/#{clip.project_id}/#{File.basename("#{clip.clip_name}", '.*')}.mov") then link_to image_tag("/images/thumbs/#{File.basename(clip.clip_name)}.jpg"), "/data/streaming/#{clip.project_id}/#{File.basename("#{clip.clip_name}", '.*')}.mov" else image_tag("/images/noproxy.png") end %>
+	<td ><%= if File.exist?("#{RAILS_ROOT}/public/data/streaming/#{clip.project_id}/#{File.basename("#{clip.clip_name}", '.*')}.mov") then link_to image_tag("/images/thumbs/#{File.basename(clip.clip_name)}.jpg"), "/data/streaming/#{clip.project_id}/#{File.basename("#{clip.clip_name}", '.*')}.mov" else  end %>
 	<% end %>
 </tr>
 </tbody>
+<tfoot>
+	<th><%= link_to 'Home', projects_path %></th>
+	<th><%= link_to 'Ingest Footage', ingests_project_path %></th>
+	<th><%= link_to 'Offload Footage', offloads_project_path %></th>
+	<th><%= link_to 'Offload Proxies', offload_proxies_project_path %></th>
+	<th><%= link_to 'Export to Excel', request.parameters.merge({:format => :csv}) %></th>
+	<th><%= link_to 'Settings', edit_project_path(@project) %></th>
+	
+		</tfoot>
 	</table>
 
 	<div id="pager" class="pager">
